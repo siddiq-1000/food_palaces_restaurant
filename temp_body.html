@@ -1,0 +1,662 @@
+
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<canvas id="bgCanvas"></canvas>
+
+<!-- ══ HEADER ══════════════════════════════════════════════════════ -->
+<header id="header">
+  <div class="logo">
+    <svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="hg1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#D4AF37"/>
+          <stop offset="50%" style="stop-color:#FFC107"/>
+          <stop offset="100%" style="stop-color:#B8860B"/>
+        </linearGradient>
+        <linearGradient id="hg2" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#B8860B"/>
+          <stop offset="50%" style="stop-color:#D4AF37"/>
+          <stop offset="100%" style="stop-color:#B8860B"/>
+        </linearGradient>
+        <filter id="hglow"><feGaussianBlur stdDeviation="2.5" result="cb"/><feMerge><feMergeNode in="cb"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="hsglow"><feGaussianBlur stdDeviation="1.5" result="cb"/><feMerge><feMergeNode in="cb"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <!-- Outer border -->
+      <rect x="6" y="6" width="508" height="188" fill="none" stroke="url(#hg2)" stroke-width="1" rx="2" opacity="0.6"/>
+      <rect x="10" y="10" width="500" height="180" fill="none" stroke="url(#hg2)" stroke-width="0.4" rx="1" opacity="0.3"/>
+      <!-- Corner ornaments -->
+      <g filter="url(#hsglow)">
+        <circle cx="6" cy="6" r="2.5" fill="#D4AF37" opacity="0.8"/>
+        <line x1="6" y1="22" x2="22" y2="6" stroke="#D4AF37" stroke-width="1" opacity="0.7"/>
+        <circle cx="514" cy="6" r="2.5" fill="#D4AF37" opacity="0.8"/>
+        <line x1="514" y1="22" x2="498" y2="6" stroke="#D4AF37" stroke-width="1" opacity="0.7"/>
+        <circle cx="6" cy="194" r="2.5" fill="#D4AF37" opacity="0.8"/>
+        <line x1="6" y1="178" x2="22" y2="194" stroke="#D4AF37" stroke-width="1" opacity="0.7"/>
+        <circle cx="514" cy="194" r="2.5" fill="#D4AF37" opacity="0.8"/>
+        <line x1="514" y1="178" x2="498" y2="194" stroke="#D4AF37" stroke-width="1" opacity="0.7"/>
+      </g>
+      <!-- Halal badge -->
+      <rect x="24" y="20" width="52" height="18" rx="2" fill="none" stroke="#C62828" stroke-width="1"/>
+      <text x="50" y="32.5" font-family="Georgia,serif" font-size="8.5" font-weight="bold" fill="#C62828" text-anchor="middle" letter-spacing="1">HALAL</text>
+      <!-- Crown -->
+      <g transform="translate(218,14)" filter="url(#hglow)">
+        <polygon points="42,0 50,16 58,4 54,20 30,20 26,4 34,16" fill="url(#hg1)" opacity="0.9"/>
+        <rect x="26" y="18" width="32" height="4" rx="1" fill="url(#hg1)"/>
+        <circle cx="30" cy="8" r="2" fill="#FFF8E1" opacity="0.6"/>
+        <circle cx="42" cy="3" r="2.5" fill="#FFF8E1" opacity="0.8"/>
+        <circle cx="54" cy="8" r="2" fill="#FFF8E1" opacity="0.6"/>
+      </g>
+      <!-- Dividers -->
+      <line x1="30" y1="48" x2="490" y2="48" stroke="url(#hg2)" stroke-width="0.7" opacity="0.4"/>
+      <circle cx="260" cy="48" r="3" fill="#D4AF37" opacity="0.7"/>
+      <circle cx="240" cy="48" r="1.5" fill="#D4AF37" opacity="0.4"/>
+      <circle cx="280" cy="48" r="1.5" fill="#D4AF37" opacity="0.4"/>
+      <!-- FOOD -->
+      <text x="260" y="100" font-family="Georgia,'Times New Roman',serif" font-size="52" font-weight="700" fill="url(#hg1)" text-anchor="middle" letter-spacing="10" filter="url(#hglow)">FOOD</text>
+      <!-- PALACE -->
+      <text x="260" y="140" font-family="Georgia,'Times New Roman',serif" font-size="38" font-weight="400" fill="#FFF8E1" text-anchor="middle" letter-spacing="16">PALACE</text>
+      <!-- Side diamonds -->
+      <line x1="40" y1="120" x2="118" y2="120" stroke="url(#hg2)" stroke-width="0.8" opacity="0.5"/>
+      <line x1="402" y1="120" x2="480" y2="120" stroke="url(#hg2)" stroke-width="0.8" opacity="0.5"/>
+      <polygon points="122,120 128,116 134,120 128,124" fill="#D4AF37" opacity="0.5"/>
+      <polygon points="386,120 392,116 398,120 392,124" fill="#D4AF37" opacity="0.5"/>
+      <!-- Bottom divider -->
+      <line x1="30" y1="152" x2="490" y2="152" stroke="url(#hg2)" stroke-width="0.7" opacity="0.4"/>
+      <circle cx="260" cy="152" r="3" fill="#D4AF37" opacity="0.7"/>
+      <circle cx="240" cy="152" r="1.5" fill="#D4AF37" opacity="0.4"/>
+      <circle cx="280" cy="152" r="1.5" fill="#D4AF37" opacity="0.4"/>
+      <!-- FAMILY RESTAURANT -->
+      <text x="260" y="167" font-family="Georgia,'Times New Roman',serif" font-size="10" fill="#8D6E63" text-anchor="middle" letter-spacing="4">FAMILY  RESTAURANT</text>
+      <!-- Tagline -->
+      <text x="260" y="182" font-family="Georgia,'Times New Roman',serif" font-size="9" font-style="italic" fill="#D4AF37" text-anchor="middle" opacity="0.85" letter-spacing="1">— The Real Taste of Malabar —</text>
+    </svg>
+  </div>
+  <nav>
+    <a href="#gallery">Gallery</a>
+    <a href="#menu">Menu</a>
+    <a href="#reservations">Reservations</a>
+    <a href="#footer">Contact</a>
+  </nav>
+  <button class="header-cta" onclick="document.getElementById('reservations').scrollIntoView({behavior:'smooth'})">Reserve Table</button>
+</header>
+
+<!-- ══ HERO ════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="ring ring-1"></div>
+  <div class="ring ring-2"></div>
+  <div class="ring ring-3"></div>
+
+  <div class="hero-food-image" id="heroImageWrap">
+    <img id="heroImg" src="" alt="Signature Dish">
+    <div class="upload-hint" onclick="document.getElementById('imgUpload').click()">
+      <span class="hint-icon">🍛</span>
+      <span>Click to upload</span>
+      <span>your food image</span>
+      <span class="hint-sub">JPG · PNG · WEBP</span>
+    </div>
+  </div>
+  <input type="file" id="imgUpload" accept="image/*" style="display:none" onchange="loadHero(event)">
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Est. 1998 · Authentic Indian Cuisine</div>
+    <h1 class="hero-title">
+      <em>A Taste of</em>
+      <strong>Royal India</strong>
+    </h1>
+    <p class="hero-subtitle">Where ancient spices meet modern artistry. Every dish is a journey through India's most treasured culinary traditions, crafted with love and served with grace.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="document.getElementById('orderModal').classList.add('active')">Order Online</button>
+      <a href="#menu" class="btn-secondary">Explore Menu</a>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <div class="scroll-text">Scroll</div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-icon">⭐</div><div><div class="stat-num">4.9</div><div class="stat-label">Guest Rating</div></div></div>
+    <div class="stat-item"><div class="stat-icon">🍽️</div><div><div class="stat-num">120+</div><div class="stat-label">Signature Dishes</div></div></div>
+    <div class="stat-item"><div class="stat-icon">👨‍🍳</div><div><div class="stat-num">25yr</div><div class="stat-label">Culinary Heritage</div></div></div>
+    <div class="stat-item"><div class="stat-icon">🏆</div><div><div class="stat-num">12</div><div class="stat-label">Awards Won</div></div></div>
+  </div>
+</section>
+
+<!-- ══ MARQUEE ═════════════════════════════════════════════════════ -->
+<div class="marquee-section">
+  <div class="marquee-track" id="marqueeTrack"></div>
+</div>
+
+<!-- ══ TODAY'S SPECIAL ════════════════════════════════════════════ -->
+<section class="special-section">
+  <div class="section-eyebrow">Curated For You</div>
+  <h2 class="section-title reveal">Today's <em>Specials</em></h2>
+  <div class="cards-grid">
+    <div class="food-card reveal reveal-d1">
+      <div class="card-image-wrap"><div class="card-img-placeholder">🍛</div></div>
+      <div class="card-overlay"></div><div class="badge">Chef's Pick</div>
+      <div class="card-body">
+        <div class="card-name">Butter Chicken</div>
+        <div class="card-desc">Tender chicken in velvety tomato-cream sauce with aromatic spices. A timeless classic.</div>
+        <div class="card-footer"><div class="price">₹480 <span>/ serving</span></div><button class="add-btn">+</button></div>
+      </div>
+    </div>
+    <div class="food-card reveal reveal-d2">
+      <div class="card-image-wrap"><div class="card-img-placeholder">🍖</div></div>
+      <div class="card-overlay"></div><div class="badge">Today's Special</div>
+      <div class="card-body">
+        <div class="card-name">Lamb Rogan Josh</div>
+        <div class="card-desc">Slow-cooked Kashmiri lamb with whole spices, saffron and caramelised onions.</div>
+        <div class="card-footer"><div class="price">₹680 <span>/ serving</span></div><button class="add-btn">+</button></div>
+      </div>
+    </div>
+    <div class="food-card reveal reveal-d3">
+      <div class="card-image-wrap"><div class="card-img-placeholder">🥘</div></div>
+      <div class="card-overlay"></div>
+      <div class="card-body">
+        <div class="card-name">Dal Makhani</div>
+        <div class="card-desc">Slow-simmered black lentils in rich butter-cream sauce. 48-hour perfection.</div>
+        <div class="card-footer"><div class="price">₹320 <span>/ serving</span></div><button class="add-btn">+</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══ GALLERY ═════════════════════════════════════════════════════ -->
+<section id="gallery">
+  <div class="gallery-header">
+    <div class="section-eyebrow reveal">Our Ambiance</div>
+    <h2 class="section-title reveal">The <em>Gallery</em></h2>
+  </div>
+  <div class="gallery-grid">
+    <!-- Tall left -->
+    <div class="gallery-item tall reveal">
+      <div class="g-placeholder" onclick="triggerGalleryUpload(this,0)">
+        <span class="g-icon">🏛️</span>
+        <span class="g-label">Upload Photo</span>
+        <span class="g-sub">Interior / Ambiance</span>
+      </div>
+      <div class="gallery-item-overlay"><div class="g-caption">Grand Dining Hall</div></div>
+    </div>
+    <!-- Top right 3 -->
+    <div class="gallery-item reveal reveal-d1">
+      <div class="g-placeholder" onclick="triggerGalleryUpload(this,1)">
+        <span class="g-icon">🍱</span>
+        <span class="g-label">Upload Photo</span>
+        <span class="g-sub">Signature Dish</span>
+      </div>
+      <div class="gallery-item-overlay"><div class="g-caption">Biryani Royal</div></div>
+    </div>
+    <div class="gallery-item wide reveal reveal-d2">
+      <div class="g-placeholder" onclick="triggerGalleryUpload(this,2)">
+        <span class="g-icon">🕯️</span>
+        <span class="g-label">Upload Photo</span>
+        <span class="g-sub">Evening Setting</span>
+      </div>
+      <div class="gallery-item-overlay"><div class="g-caption">Candlelit Evening</div></div>
+    </div>
+    <!-- Bottom right 2 -->
+    <div class="gallery-item reveal reveal-d1">
+      <div class="g-placeholder" onclick="triggerGalleryUpload(this,3)">
+        <span class="g-icon">🍢</span>
+        <span class="g-label">Upload Photo</span>
+        <span class="g-sub">Tandoori Platter</span>
+      </div>
+      <div class="gallery-item-overlay"><div class="g-caption">Tandoori Selection</div></div>
+    </div>
+    <div class="gallery-item reveal reveal-d2">
+      <div class="g-placeholder" onclick="triggerGalleryUpload(this,4)">
+        <span class="g-icon">🎨</span>
+        <span class="g-label">Upload Photo</span>
+        <span class="g-sub">Dessert Art</span>
+      </div>
+      <div class="gallery-item-overlay"><div class="g-caption">Dessert Artistry</div></div>
+    </div>
+    <div class="gallery-item reveal reveal-d3">
+      <div class="g-placeholder" onclick="triggerGalleryUpload(this,5)">
+        <span class="g-icon">🌿</span>
+        <span class="g-label">Upload Photo</span>
+        <span class="g-sub">Garden Terrace</span>
+      </div>
+      <div class="gallery-item-overlay"><div class="g-caption">Garden Terrace</div></div>
+    </div>
+  </div>
+  <input type="file" id="galleryUpload" accept="image/*" style="display:none">
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══ FULL MENU ════════════════════════════════════════════════════ -->
+<section id="menu">
+  <div class="menu-header">
+    <div class="section-eyebrow reveal">Crafted With Passion</div>
+    <h2 class="section-title reveal">Our <em>Menu</em></h2>
+  </div>
+
+  <div class="menu-tabs" id="menuTabs">
+    <button class="menu-tab active" data-tab="starters">Starters</button>
+    <button class="menu-tab" data-tab="mains">Main Course</button>
+    <button class="menu-tab" data-tab="breads">Breads & Rice</button>
+    <button class="menu-tab" data-tab="desserts">Desserts</button>
+    <button class="menu-tab" data-tab="drinks">Drinks</button>
+  </div>
+
+  <!-- STARTERS -->
+  <div class="menu-panel active" id="tab-starters">
+    <div class="menu-grid">
+      <div class="menu-item reveal"><div class="menu-item-icon">🥗</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-veg"></span>Paneer Tikka</span><div class="menu-item-dots"></div><span class="menu-item-price">₹340</span></div><div class="menu-item-desc">Cottage cheese marinated in spiced yoghurt, grilled in the tandoor until charred and smoky.</div></div></div>
+      <div class="menu-item reveal reveal-d1"><div class="menu-item-icon">🍗</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-nonveg"></span>Chicken 65 <span class="menu-item-badge">Spicy</span></span><div class="menu-item-dots"></div><span class="menu-item-price">₹380</span></div><div class="menu-item-desc">Crispy deep-fried chicken with curry leaves, green chillies, and South Indian spices.</div></div></div>
+      <div class="menu-item reveal"><div class="menu-item-icon">🧅</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-veg"></span>Onion Bhaji</span><div class="menu-item-dots"></div><span class="menu-item-price">₹220</span></div><div class="menu-item-desc">Golden-fried onion fritters with cumin, coriander and green chilli. Served with mint chutney.</div></div></div>
+      <div class="menu-item reveal reveal-d1"><div class="menu-item-icon">🦐</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-nonveg"></span>Prawn Koliwada</span><div class="menu-item-dots"></div><span class="menu-item-price">₹520</span></div><div class="menu-item-desc">Mumbai-style spiced prawns in a crunchy chickpea batter. A coastal classic.</div></div></div>
+      <div class="menu-item reveal"><div class="menu-item-icon">🌯</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-veg"></span>Dahi Kebab</span><div class="menu-item-dots"></div><span class="menu-item-price">₹300</span></div><div class="menu-item-desc">Hung curd patties with cheese, herbs and a crispy breadcrumb crust.</div></div></div>
+      <div class="menu-item reveal reveal-d1"><div class="menu-item-icon">🍢</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-nonveg"></span>Seekh Kebab <span class="menu-item-badge">Chef's Pick</span></span><div class="menu-item-dots"></div><span class="menu-item-price">₹440</span></div><div class="menu-item-desc">Minced lamb skewers with ginger, garlic, raw papaya and aromatic whole spices.</div></div></div>
+    </div>
+  </div>
+
+  <!-- MAINS -->
+  <div class="menu-panel" id="tab-mains">
+    <div class="menu-grid">
+      <div class="menu-item reveal"><div class="menu-item-icon">🍛</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-nonveg"></span>Butter Chicken <span class="menu-item-badge">Bestseller</span></span><div class="menu-item-dots"></div><span class="menu-item-price">₹480</span></div><div class="menu-item-desc">Tandoori chicken simmered in a velvety tomato-cream sauce with fenugreek leaves.</div></div></div>
+      <div class="menu-item reveal reveal-d1"><div class="menu-item-icon">🥘</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-veg"></span>Paneer Lababdar</span><div class="menu-item-dots"></div><span class="menu-item-price">₹420</span></div><div class="menu-item-desc">Cottage cheese cubes in a rich onion-tomato gravy with capsicum and cream.</div></div></div>
+      <div class="menu-item reveal"><div class="menu-item-icon">🍖</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-nonveg"></span>Lamb Rogan Josh</span><div class="menu-item-dots"></div><span class="menu-item-price">₹680</span></div><div class="menu-item-desc">Slow-braised Kashmiri lamb with Ratan jot, whole spices and caramelised onions.</div></div></div>
+      <div class="menu-item reveal reveal-d1"><div class="menu-item-icon">🌱</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-veg"></span>Dal Makhani</span><div class="menu-item-dots"></div><span class="menu-item-price">₹320</span></div><div class="menu-item-desc">Slow-simmered black lentils in rich butter-cream sauce. Cooked for 48 hours.</div></div></div>
+      <div class="menu-item reveal"><div class="menu-item-icon">🐟</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-nonveg"></span>Kerala Fish Curry</span><div class="menu-item-dots"></div><span class="menu-item-price">₹560</span></div><div class="menu-item-desc">Sea fish cooked in tangy coconut milk curry with Kodampuli and curry leaves.</div></div></div>
+      <div class="menu-item reveal reveal-d1"><div class="menu-item-icon">🥬</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-veg"></span>Palak Paneer <span class="menu-item-badge">Chef's Pick</span></span><div class="menu-item-dots"></div><span class="menu-item-price">₹370</span></div><div class="menu-item-desc">Fresh cottage cheese in a silky spinach-cream sauce with whole spices and ginger.</div></div></div>
+      <div class="menu-item reveal"><div class="menu-item-icon">🍗</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-nonveg"></span>Chicken Chettinad</span><div class="menu-item-dots"></div><span class="menu-item-price">₹520</span></div><div class="menu-item-desc">Fiery Chettinad spiced chicken with kalpasi, marathi mokku and coconut.</div></div></div>
+      <div class="menu-item reveal reveal-d1"><div class="menu-item-icon">🫘</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-veg"></span>Rajma Masala</span><div class="menu-item-dots"></div><span class="menu-item-price">₹280</span></div><div class="menu-item-desc">Red kidney beans in a thick, tangy tomato masala. A Punjabi home comfort classic.</div></div></div>
+    </div>
+  </div>
+
+  <!-- BREADS & RICE -->
+  <div class="menu-panel" id="tab-breads">
+    <div class="menu-grid">
+      <div class="menu-item reveal"><div class="menu-item-icon">🫓</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-veg"></span>Butter Naan</span><div class="menu-item-dots"></div><span class="menu-item-price">₹80</span></div><div class="menu-item-desc">Soft leavened flatbread baked in the tandoor, finished with butter and nigella seeds.</div></div></div>
+      <div class="menu-item reveal reveal-d1"><div class="menu-item-icon">🥙</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-veg"></span>Garlic Naan</span><div class="menu-item-dots"></div><span class="menu-item-price">₹100</span></div><div class="menu-item-desc">Tandoor naan topped generously with roasted garlic, butter and fresh coriander.</div></div></div>
+      <div class="menu-item reveal"><div class="menu-item-icon">🍚</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-nonveg"></span>Hyderabadi Biryani <span class="menu-item-badge">Bestseller</span></span><div class="menu-item-dots"></div><span class="menu-item-price">₹580</span></div><div class="menu-item-desc">Dum-cooked Basmati rice layered with spiced meat, caramelised onions, saffron and rose water.</div></div></div>
+      <div class="menu-item reveal reveal-d1"><div class="menu-item-icon">🌾</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-veg"></span>Veg Biryani</span><div class="menu-item-dots"></div><span class="menu-item-price">₹380</span></div><div class="menu-item-desc">Fragrant saffron Basmati rice with seasonal vegetables and whole spices cooked in dum style.</div></div></div>
+      <div class="menu-item reveal"><div class="menu-item-icon">🧁</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-veg"></span>Peshwari Naan</span><div class="menu-item-dots"></div><span class="menu-item-price">₹120</span></div><div class="menu-item-desc">Sweet naan filled with coconut, almond and sultanas. A North-West Frontier indulgence.</div></div></div>
+      <div class="menu-item reveal reveal-d1"><div class="menu-item-icon">🌀</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-veg"></span>Laccha Paratha</span><div class="menu-item-dots"></div><span class="menu-item-price">₹90</span></div><div class="menu-item-desc">Layered whole wheat flatbread cooked on a griddle with ghee. Flaky and fragrant.</div></div></div>
+    </div>
+  </div>
+
+  <!-- DESSERTS -->
+  <div class="menu-panel" id="tab-desserts">
+    <div class="menu-grid">
+      <div class="menu-item reveal"><div class="menu-item-icon">🍮</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-veg"></span>Gulab Jamun <span class="menu-item-badge">Bestseller</span></span><div class="menu-item-dots"></div><span class="menu-item-price">₹180</span></div><div class="menu-item-desc">Khoya dumplings soaked in rose-saffron sugar syrup. Served warm with vanilla ice cream.</div></div></div>
+      <div class="menu-item reveal reveal-d1"><div class="menu-item-icon">🍨</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-veg"></span>Kulfi Falooda</span><div class="menu-item-dots"></div><span class="menu-item-price">₹220</span></div><div class="menu-item-desc">Traditional Indian ice cream with vermicelli, rose syrup, basil seeds and fresh cream.</div></div></div>
+      <div class="menu-item reveal"><div class="menu-item-icon">🍚</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-veg"></span>Phirni</span><div class="menu-item-dots"></div><span class="menu-item-price">₹160</span></div><div class="menu-item-desc">Ground rice pudding with saffron, cardamom and rose water, set in a clay matki.</div></div></div>
+      <div class="menu-item reveal reveal-d1"><div class="menu-item-icon">🥣</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-veg"></span>Shahi Tukda <span class="menu-item-badge">Chef's Pick</span></span><div class="menu-item-dots"></div><span class="menu-item-price">₹200</span></div><div class="menu-item-desc">Fried bread soaked in saffron milk, topped with thickened rabri and silver varq.</div></div></div>
+    </div>
+  </div>
+
+  <!-- DRINKS -->
+  <div class="menu-panel" id="tab-drinks">
+    <div class="menu-grid">
+      <div class="menu-item reveal"><div class="menu-item-icon">🥛</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-veg"></span>Mango Lassi</span><div class="menu-item-dots"></div><span class="menu-item-price">₹160</span></div><div class="menu-item-desc">Alphonso mango blended with thick yoghurt, sugar and a pinch of cardamom.</div></div></div>
+      <div class="menu-item reveal reveal-d1"><div class="menu-item-icon">🌹</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-veg"></span>Rose Sharbat</span><div class="menu-item-dots"></div><span class="menu-item-price">₹120</span></div><div class="menu-item-desc">Chilled rose petal syrup with basil seeds, lemon and a hint of saffron.</div></div></div>
+      <div class="menu-item reveal"><div class="menu-item-icon">🍵</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-veg"></span>Masala Chai</span><div class="menu-item-dots"></div><span class="menu-item-price">₹80</span></div><div class="menu-item-desc">Spiced tea with ginger, cardamom, cinnamon and tulsi. Brewed to perfection.</div></div></div>
+      <div class="menu-item reveal reveal-d1"><div class="menu-item-icon">🥤</div><div class="menu-item-info"><div class="menu-item-top"><span class="menu-item-name"><span class="menu-veg"></span>Royal Nimbu Pani</span><div class="menu-item-dots"></div><span class="menu-item-price">₹100</span></div><div class="menu-item-desc">Fresh squeezed lemon with black salt, roasted cumin and fresh mint.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══ RESERVATIONS ═════════════════════════════════════════════════ -->
+<section id="reservations">
+  <div class="res-container">
+
+    <!-- LEFT INFO PANEL -->
+    <div class="res-left reveal">
+      <div class="res-badge"><span>Book Your Table</span></div>
+      <div class="res-main-title">Reserve<em>A Royal Table</em></div>
+      <p class="res-tagline">Experience the Real Taste of Malabar — every visit, a memory.</p>
+
+      <!-- Hours -->
+      <div class="res-info-card">
+        <div class="res-card-header">
+          <span class="res-card-icon">🕐</span>
+          <span class="res-card-title">Opening Hours</span>
+        </div>
+        <div class="res-card-rows">
+          <div class="res-card-row"><strong>Mon–Fri</strong> 12:00 PM – 11:00 PM</div>
+          <div class="res-card-row"><strong>Sat–Sun</strong> 11:00 AM – 11:30 PM</div>
+          <div class="res-card-row"><strong>Kitchen</strong> closes 30 min before closing</div>
+        </div>
+      </div>
+
+      <!-- Location -->
+      <div class="res-info-card">
+        <div class="res-card-header">
+          <span class="res-card-icon">📍</span>
+          <span class="res-card-title">Find Us</span>
+        </div>
+        <div class="res-card-rows">
+          <div class="res-card-row">Building 894, Global Village Back Gate, Mylasandra, RR Nagar, Bengaluru – 560059</div>
+          <div class="res-card-row"><strong>📞</strong> 9036 345 101 / 9036 515 101</div>
+          <div class="res-card-row"><strong>✉️</strong> foodpalace77@gmail.com</div>
+        </div>
+      </div>
+
+      <!-- Private Dining -->
+      <div class="res-info-card">
+        <div class="res-card-header">
+          <span class="res-card-icon">👑</span>
+          <span class="res-card-title">Private Dining</span>
+        </div>
+        <div class="res-private-grid">
+          <div class="res-private-item">
+            <span class="p-icon">🏛️</span>
+            <span class="p-name">Royal Hall</span>
+            <span class="p-cap">Up to 80 guests</span>
+          </div>
+          <div class="res-private-item">
+            <span class="p-icon">🕯️</span>
+            <span class="p-name">Maharaja Suite</span>
+            <span class="p-cap">Up to 12 guests</span>
+          </div>
+          <div class="res-private-item">
+            <span class="p-icon">🌿</span>
+            <span class="p-name">Garden Terrace</span>
+            <span class="p-cap">Up to 40 guests</span>
+          </div>
+          <div class="res-private-item">
+            <span class="p-icon">🍽️</span>
+            <span class="p-name">Catering</span>
+            <span class="p-cap">All party sizes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT FORM PANEL -->
+    <div class="res-right reveal reveal-d2">
+      <div class="form-top-bar">
+        <div class="form-top-title">Make a <em>Reservation</em></div>
+        <div class="form-step-indicator">
+          <div class="step-dot active"></div>
+          <div class="step-dot active"></div>
+          <div class="step-dot active"></div>
+        </div>
+      </div>
+
+      <div class="res-form" id="resForm">
+        <!-- Row 1: Name -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name</label>
+            <input class="form-input" type="text" placeholder="e.g. Arjun" id="fname">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <input class="form-input" type="text" placeholder="e.g. Sharma" id="lname">
+          </div>
+        </div>
+        <!-- Row 2: Contact -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input class="form-input" type="email" placeholder="arjun@email.com" id="email">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input class="form-input" type="tel" placeholder="+91 98765 43210" id="phone">
+          </div>
+        </div>
+        <!-- Row 3: Date & Time -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Date of Visit</label>
+            <input class="form-input" type="date" id="resDate">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Preferred Time</label>
+            <select class="form-select" id="resTime">
+              <option value="">Choose a slot</option>
+              <optgroup label="— Lunch —">
+                <option>12:00 PM</option><option>12:30 PM</option>
+                <option>1:00 PM</option><option>1:30 PM</option>
+                <option>2:00 PM</option><option>2:30 PM</option>
+              </optgroup>
+              <optgroup label="— Dinner —">
+                <option>7:00 PM</option><option>7:30 PM</option>
+                <option>8:00 PM</option><option>8:30 PM</option>
+                <option>9:00 PM</option><option>9:30 PM</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+        <!-- Row 4: Guests & Occasion -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Number of Guests</label>
+            <select class="form-select" id="guests">
+              <option value="">How many guests?</option>
+              <option>1 Guest</option><option>2 Guests</option>
+              <option>3 Guests</option><option>4 Guests</option>
+              <option>5–6 Guests</option><option>7–10 Guests</option>
+              <option>11+ Guests (Private Dining)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Special Occasion</label>
+            <select class="form-select" id="occasion">
+              <option value="">What's the occasion?</option>
+              <option>🎂 Birthday</option>
+              <option>💍 Anniversary</option>
+              <option>💼 Business Dinner</option>
+              <option>💞 Proposal</option>
+              <option>👨‍👩‍👧 Family Gathering</option>
+              <option>🍽️ Just Dining</option>
+            </select>
+          </div>
+        </div>
+        <!-- Row 5: Special Requests full width -->
+        <div class="form-row">
+          <div class="form-group full textarea-group">
+            <label class="form-label">Special Requests</label>
+            <textarea class="form-textarea" placeholder="Dietary requirements, seating preferences, allergies, decoration requests, cake arrangements…" id="requests" oninput="updateChar(this)"></textarea>
+          </div>
+        </div>
+        <div class="char-hint" id="charHint">0 / 300 characters</div>
+
+        <!-- Submit -->
+        <div class="form-submit-row">
+          <div class="form-submit-note">
+            We'll confirm within <strong>2 hours</strong>.<br>Free cancellation up to <strong>24 hrs</strong> prior.
+          </div>
+          <button class="form-submit" onclick="submitReservation()">
+            Confirm Reservation <span class="btn-arrow">→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Success State -->
+      <div class="form-success" id="formSuccess">
+        <div class="success-icon-wrap">🎉</div>
+        <h3>Reservation Confirmed!</h3>
+        <p class="success-sub">Thank you for choosing Food Palace. We have received your booking and will send a confirmation to your email shortly.</p>
+        <p class="success-detail">We look forward to serving you a royal Malabar dining experience.</p>
+        <button class="form-submit" onclick="resetForm()">Make Another Reservation <span class="btn-arrow">→</span></button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══ FOOTER ══════════════════════════════════════════════════════ -->
+<footer id="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">
+    <svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" style="height:60px;width:auto;filter:drop-shadow(0 0 8px rgba(212,175,55,.3));">
+      <defs>
+        <linearGradient id="fg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#D4AF37"/><stop offset="50%" style="stop-color:#FFC107"/><stop offset="100%" style="stop-color:#B8860B"/></linearGradient>
+        <linearGradient id="fg2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#B8860B"/><stop offset="50%" style="stop-color:#D4AF37"/><stop offset="100%" style="stop-color:#B8860B"/></linearGradient>
+      </defs>
+      <rect x="6" y="6" width="508" height="188" fill="none" stroke="url(#fg2)" stroke-width="1" rx="2" opacity="0.5"/>
+      <rect x="24" y="20" width="52" height="18" rx="2" fill="none" stroke="#C62828" stroke-width="1"/>
+      <text x="50" y="32.5" font-family="Georgia,serif" font-size="8.5" font-weight="bold" fill="#C62828" text-anchor="middle" letter-spacing="1">HALAL</text>
+      <g transform="translate(218,14)"><polygon points="42,0 50,16 58,4 54,20 30,20 26,4 34,16" fill="url(#fg1)" opacity="0.9"/><rect x="26" y="18" width="32" height="4" rx="1" fill="url(#fg1)"/><circle cx="42" cy="3" r="2.5" fill="#FFF8E1" opacity="0.8"/></g>
+      <line x1="30" y1="48" x2="490" y2="48" stroke="url(#fg2)" stroke-width="0.7" opacity="0.35"/>
+      <text x="260" y="100" font-family="Georgia,'Times New Roman',serif" font-size="52" font-weight="700" fill="url(#fg1)" text-anchor="middle" letter-spacing="10">FOOD</text>
+      <text x="260" y="140" font-family="Georgia,'Times New Roman',serif" font-size="38" font-weight="400" fill="#FFF8E1" text-anchor="middle" letter-spacing="16">PALACE</text>
+      <line x1="30" y1="152" x2="490" y2="152" stroke="url(#fg2)" stroke-width="0.7" opacity="0.35"/>
+      <text x="260" y="167" font-family="Georgia,'Times New Roman',serif" font-size="10" fill="#8D6E63" text-anchor="middle" letter-spacing="4">FAMILY  RESTAURANT</text>
+      <text x="260" y="182" font-family="Georgia,'Times New Roman',serif" font-size="9" font-style="italic" fill="#D4AF37" text-anchor="middle" opacity="0.8" letter-spacing="1">— The Real Taste of Malabar —</text>
+    </svg>
+  </div>
+      <div class="footer-tagline">"A warm premium food experience using golden luxury tones — reflecting rich Indian hospitality since 1998."</div>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#menu">Full Menu</a></li>
+          <li><a href="#reservations">Reservations</a></li>
+          <li><a href="#">Private Dining</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><span>12, Palace Road, MG Road</span></li>
+          <li><span>Bengaluru – 560001</span></li>
+          <li><span>+91 80 4567 8900</span></li>
+          <li><span>dine@foodpalaces.in</span></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Hours</h4>
+        <ul>
+          <li><span>Mon–Fri: 12 PM – 11 PM</span></li>
+          <li><span>Sat–Sun: 11 AM – 11:30 PM</span></li>
+          <li><span>Kitchen closes 30 min</span></li>
+          <li><span>before closing time</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Food Palaces. All rights reserved. | Bengaluru, India | <a href="/admin" style="color:var(--gold);text-decoration:none;">Admin</a></div>
+    <div class="footer-social">
+      <a href="#">𝕏</a>
+      <a href="#">in</a>
+      <a href="#">📷</a>
+      <a href="#">▶</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Order Float Window -->
+<div class="order-modal" id="orderModal">
+  <div class="order-modal-content">
+    <button class="order-modal-close" onclick="document.getElementById('orderModal').classList.remove('active')">&times;</button>
+    <div class="order-modal-title">Choose <em>Delivery</em></div>
+    <a href="https://www.zomato.com/bangalore/food-palace-family-restaurant-broasted-king-kengeri-bangalore/order" target="_blank" class="order-modal-btn">Order on Zomato</a>
+    <a href="https://www.swiggy.com/city/bangalore/food-palace-family-restaurant-rajarajeshwari-nagar-rajarajeshwari-nagar-rest1314012?utm_source=GooglePlaceOrder&utm_campaign=GoogleMap&is_retargeting=true&media_source=GooglePlaceOrder" target="_blank" class="order-modal-btn swiggy">Order on Swiggy</a>
+  </div>
+</div>
+
+<script>
+// ── CURSOR ──────────────────────────────────────────────────────────
+const cursor=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+(function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+function addHover(sel){document.querySelectorAll(sel).forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.classList.add('hov');ring.classList.add('hov');});el.addEventListener('mouseleave',()=>{cursor.classList.remove('hov');ring.classList.remove('hov');});});}
+addHover('a,button,.food-card,.upload-hint,.gallery-item,.menu-item,.g-placeholder,.add-btn');
+
+// ── HEADER SCROLL ───────────────────────────────────────────────────
+window.addEventListener('scroll',()=>{document.getElementById('header').classList.toggle('scrolled',window.scrollY>60);});
+
+// ── CANVAS PARTICLES ────────────────────────────────────────────────
+const canvas=document.getElementById('bgCanvas'),ctx=canvas.getContext('2d');
+function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+resizeCanvas();window.addEventListener('resize',resizeCanvas);
+const pts=Array.from({length:80},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.5+.3,a:Math.random()*.35+.04,sx:(Math.random()-.5)*.3,sy:(Math.random()-.5)*.3,g:Math.random()>.5}));
+(function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);pts.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.g?`rgba(212,175,55,${p.a})`:`rgba(255,193,7,${p.a*.5})`;ctx.fill();p.x+=p.sx;p.y+=p.sy;if(p.x<0)p.x=canvas.width;if(p.x>canvas.width)p.x=0;if(p.y<0)p.y=canvas.height;if(p.y>canvas.height)p.y=0;});requestAnimationFrame(draw);})();
+
+// ── HERO IMAGE ──────────────────────────────────────────────────────
+function loadHero(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{document.getElementById('heroImg').src=ev.target.result;document.getElementById('heroImageWrap').classList.add('has-image');};r.readAsDataURL(f);}
+document.addEventListener('mousemove',e=>{const xR=(e.clientX/window.innerWidth-.5)*18,yR=(e.clientY/window.innerHeight-.5)*18,w=document.getElementById('heroImageWrap');if(w&&!w.classList.contains('has-image'))return;if(w)w.style.transform=`translateY(calc(-50% + ${yR*.4}px)) translateX(${xR*.2}px)`;});
+
+// ── MARQUEE ─────────────────────────────────────────────────────────
+const items=['Butter Chicken','Biryani','Rogan Josh','Palak Paneer','Tandoori','Dal Makhani','Gulab Jamun','Kulfi','Seekh Kebab','Naan'];
+const track=document.getElementById('marqueeTrack');
+[...items,...items,...items].forEach(t=>{const el=document.createElement('div');el.className='marquee-item';el.innerHTML=`<em>${t}</em><div class="marquee-dot"></div>`;track.appendChild(el);});
+
+// ── SCROLL REVEAL ───────────────────────────────────────────────────
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+
+// ── MENU TABS ───────────────────────────────────────────────────────
+document.getElementById('menuTabs').addEventListener('click',e=>{
+  const tab=e.target.closest('.menu-tab');if(!tab)return;
+  document.querySelectorAll('.menu-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));
+  tab.classList.add('active');
+  const panel=document.getElementById('tab-'+tab.dataset.tab);
+  if(panel){panel.classList.add('active');panel.querySelectorAll('.reveal').forEach(r=>{r.classList.remove('visible');setTimeout(()=>r.classList.add('visible'),50);});}
+});
+
+// ── GALLERY UPLOAD ──────────────────────────────────────────────────
+let _galleryTarget=null;
+function triggerGalleryUpload(placeholder,index){
+  _galleryTarget=placeholder;
+  document.getElementById('galleryUpload').click();
+}
+document.getElementById('galleryUpload').addEventListener('change',function(e){
+  const file=e.target.files[0];if(!file||!_galleryTarget)return;
+  const reader=new FileReader();
+  reader.onload=ev=>{
+    const item=_galleryTarget.closest('.gallery-item');
+    _galleryTarget.style.display='none';
+    let img=item.querySelector('img');
+    if(!img){img=document.createElement('img');item.insertBefore(img,item.firstChild);}
+    img.src=ev.target.result;img.style.display='block';
+    _galleryTarget=null;
+  };
+  reader.readAsDataURL(file);
+  this.value='';
+});
+
+// ── CHAR COUNTER ─────────────────────────────────────────────────
+function updateChar(el){
+  const max=300,len=Math.min(el.value.length,max);
+  el.value=el.value.slice(0,max);
+  const hint=document.getElementById('charHint');
+  if(hint){hint.textContent=len+' / '+max+' characters';hint.style.color=len>250?'rgba(198,40,40,.6)':'rgba(141,110,99,.4)';}
+}
+
+// ── RESERVATION FORM ────────────────────────────────────────────────
+function submitReservation(){
+  const fname=document.getElementById('fname').value.trim();
+  const email=document.getElementById('email').value.trim();
+  const date=document.getElementById('resDate').value;
+  const time=document.getElementById('resTime').value;
+  const guests=document.getElementById('guests').value;
+  if(!fname||!email||!date||!time||!guests){
+    alert('Please fill in all required fields: Name, Email, Date, Time, and Guests.');return;
+  }
+  document.getElementById('resForm').style.display='none';
+  document.getElementById('formSuccess').style.display='block';
+}
+function resetForm(){
+  document.getElementById('resForm').style.display='flex';
+  document.getElementById('formSuccess').style.display='none';
+  document.getElementById('resForm').reset&&document.getElementById('resForm').reset();
+  ['fname','lname','email','phone','resDate','resTime','guests','occasion','requests'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+}
+
+// Set min date to today
+(()=>{const d=new Date();const s=d.toISOString().split('T')[0];const el=document.getElementById('resDate');if(el)el.min=s;})();
+</script>
