@@ -46,8 +46,8 @@ export default function Hero() {
         <div className="order-modal-content">
           <button className="order-modal-close" onClick={() => setIsOrderModalOpen(false)}>×</button>
           <div className="order-modal-title">Choose <em>Delivery</em></div>
-          <a href="https://www.zomato.com/bangalore/food-palace-family-restaurant-broasted-king-kengeri-bangalore/order" target="_blank" rel="noreferrer" className="order-modal-btn">Order on Zomato</a>
-          <a href="https://www.swiggy.com/city/bangalore/food-palace-family-restaurant-rajarajeshwari-nagar-rajarajeshwari-nagar-rest1314012?utm_source=GooglePlaceOrder&utm_campaign=GoogleMap&is_retargeting=true&media_source=GooglePlaceOrder" target="_blank" rel="noreferrer" className="order-modal-btn swiggy">Order on Swiggy</a>
+          <a href="https://www.zomato.com/bangalore/food-palace-family-restaurant-broasted-king-kengeri-bangalore/order" target="_blank" rel="noreferrer" className="order-modal-btn" onClick={() => setIsOrderModalOpen(false)}>Order on Zomato</a>
+          <a href="https://www.swiggy.com/city/bangalore/food-palace-family-restaurant-rajarajeshwari-nagar-rajarajeshwari-nagar-rest1314012?utm_source=GooglePlaceOrder&utm_campaign=GoogleMap&is_retargeting=true&media_source=GooglePlaceOrder" target="_blank" rel="noreferrer" className="order-modal-btn swiggy" onClick={() => setIsOrderModalOpen(false)}>Order on Swiggy</a>
         </div>
       </div>
     </>
