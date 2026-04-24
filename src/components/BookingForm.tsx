@@ -3,7 +3,7 @@ import { MessageCircle } from 'lucide-react';
 
 export default function BookingForm() {
   const handleWhatsAppClick = () => {
-    const TARGET_PHONE_NUMBER = '9535140967';
+    const TARGET_PHONE_NUMBER = '74065 56771';
     // A simple ice-breaker message that triggers the WhatsApp Business auto-reply
     const defaultMessage = 'Hello Food Palaces! I would like to book a table.';
     const whatsappUrl = `https://wa.me/${TARGET_PHONE_NUMBER}?text=${encodeURIComponent(defaultMessage)}`;
